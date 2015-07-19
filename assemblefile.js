@@ -19,4 +19,4 @@ assemble.task('assets', function () {
     .pipe(assemble.dest('dist/assets/'));
 });
 
-assemble.task('default', ['html', 'css']);
+assemble.task('default', ['html', 'assets']);
