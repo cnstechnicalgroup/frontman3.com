@@ -1,22 +1,42 @@
-var assemble = require('assemble');
-var less = require('gulp-less');
-var extname = require("gulp-extname");
+var assemble = require( 'assemble' );
+var fsUtils = require( 'fs-utils' );
+var less = require( 'gulp-less' );
+var debug = require( 'gulp-debug' );
+var extname = require( 'gulp-extname' );
+var engine = require('engine-assemble');
+var layouts = require('handlebars-layouts');
+var config = fsUtils.readYAMLSync( './assemble-config.yml' );
 
-assemble.task('html', function() {
-  assemble.src('templates/*.hbs')
+// ****************************************************************************************
+// Basic assemble configuration
+// ****************************************************************************************
+
+assemble.engine('hbs', engine);
+assemble.helpers(layouts(engine.Handlebars));
+assemble.layouts( config.assemble.layouts);
+assemble.partials( config.assemble.partials);
+assemble.pages( config.assemble.pages );
+
+// Set Options
+assemble.option('layout', config.assemble.layout);
+assemble.option( 'assets', config.assemble.assets);
+
+// ****************************************************************************************
+// Content configuration
+// ****************************************************************************************
+
+assemble.task( 'site', function () {
+  assemble.src( config.assemble.pages )
     .pipe(extname())
-    .pipe(assemble.dest('dist/'));
-});
-
-/*assemble.task('css', function () {
-  assemble.src('styles/*.css')
-    .pipe(less())
-    .pipe(assemble.dest('dist/assets/css'));
-});*/
+    .pipe( debug())
+    .pipe( assemble.dest( config.assemble.destination ) );
+} );
 
 assemble.task('assets', function () {
-  assemble.src('assets/*')
-    .pipe(assemble.dest('dist/assets/'));
+  return assemble.copy( config.assemble.assets, config.assemble.destination + '/assets' );
 });
 
-assemble.task('default', ['html', 'assets']);
+// ****************************************************************************************
+// Task configuration
+// ****************************************************************************************
+assemble.task( 'default', ['site', 'assets'] );

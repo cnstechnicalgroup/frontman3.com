@@ -1,0 +1,8 @@
+assemble:
+  layout: "default"
+  layouts: "./config/layouts/*.hbs"
+  layoutdir: "./config/layouts"
+  assets: "./assets/**"
+  partials: "./config/partials/*.hbs"
+  pages: "./pages/*.hbs"
+  destination: "./_gh_pages/"
