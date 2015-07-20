@@ -21,6 +21,7 @@
     "fs-utils": "^0.6.0",
     "gulp-debug": "^2.0.1",
     "gulp-extname": "^0.2.0",
-    "gulp-less": "^3.0.3"
+    "gulp-less": "^3.0.3",
+    "handlebars-layouts": "^3.1.0"
   }
 }
