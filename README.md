@@ -24,3 +24,8 @@ assemble
 cd _gh_pages/
 python -m SimpleHTTPServer 3000
 ```
+
+## Deploy to production (gh-pages)
+```
+./deploy # supply github ssh key passphrase when prompted
+```
