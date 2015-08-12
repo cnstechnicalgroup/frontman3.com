@@ -1129,7 +1129,7 @@ section.featured.footer {
 }
 
 section.featured.map {
-	background-image: url(../img/map-bottom.png);
+	background-image: url(../assets/img/map-bottom.png);
 	background-position: center 0;
 	background-repeat: no-repeat;
 	margin-top: 0;
@@ -1298,7 +1298,7 @@ aside ul.nav-list > li > a {
 }
 
 .slider-container .main-label.md {
-	font-size: 100px;
+	font-size: 73px;
 	line-height: 100px;
 }
 
@@ -1384,7 +1384,7 @@ aside ul.nav-list > li > a {
 }
 
 .home-top {
-	background-image: url(../img/home-bg.jpg);
+	background-image: url(../assets/img/home-bg.jpg);
 	background-position: center 0;
 	background-repeat: no-repeat;
 	margin-bottom: 60px;
